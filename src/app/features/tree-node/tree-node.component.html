@@ -1,0 +1,41 @@
+<div class="tree-node" [class.deleted]="node.is_deleted">
+  <div class="node-header">
+    @switch (templateType) {
+      @case ('first') {
+        <span>
+          {{node.id}} - {{node.title}}
+        </span>
+        <button (click)="viewId($event, node.id)">click</button>
+      }
+      @case ('second') {
+        <span>
+          {{node.title}}
+          @if (node.children.length) {
+            <span class="children-count">({{ node.children.length }})</span>
+          }
+        </span>
+      }
+    }
+    @if (node.children.length) {
+      <span 
+        class="arrow" 
+        [class.arrow-open]="isExpanded()" 
+        (click)="toggleExpand($event)"
+      >
+        {{ isExpanded() ? '↑' : '↓' }}
+      </span>
+    }
+  </div>
+
+  @if (isExpanded() && node.children.length) {
+    @for (child of node.children; track child.id) {
+      <app-tree-node 
+        [node]="child" 
+        [templateType]="templateType" 
+        [allChildrenExpanded]="allChildrenExpanded"
+        (nodeClicked)="nodeClicked.emit($event)"
+      >
+      </app-tree-node>
+    }
+  }
+</div>
