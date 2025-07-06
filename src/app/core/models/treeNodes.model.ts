@@ -1,6 +1,11 @@
 export interface TreeNodes {
   id: number,
   title: string,
-  isDeleted: boolean,
+  is_deleted: boolean,
   children: TreeNodes[]
+}
+
+export enum TreeNodeTemplateType {
+  First = 'first',
+  Second = 'second'
 }
