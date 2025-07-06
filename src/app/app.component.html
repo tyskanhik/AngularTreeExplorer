@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>First Tree</h1>
+  <div class="tree-container">
+    @for (node of treeData(); track node.id) {
+      <app-tree-node 
+        [node]="node" 
+        [templateType]="TreeNodeTemplateType.First"
+        (nodeClicked)="handleClick($event)"
+      >
+      </app-tree-node>
+    }
+  </div>
+
+  <h1>Second Tree</h1>
+  <div class="tree-container">
+    @for (node of treeData(); track node.id) {
+      <app-tree-node 
+        [node]="node"
+        [templateType]="TreeNodeTemplateType.Second"
+        [allChildrenExpanded]="allChildrenExpanded()"
+      >
+      </app-tree-node>
+    }
+    <button (click)="toggleOpenAll()" class="button-open-all">
+      {{ allChildrenExpanded() ? 'Свернуть все' : 'Развернуть все' }}
+    </button>
+  </div>
+</div>
