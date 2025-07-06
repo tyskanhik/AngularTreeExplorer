@@ -1,59 +1,83 @@
-# AngularTreeExplorer
+# Компонент древовидной структуры на Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
+## Описание проекта
 
-## Development server
+Реализация универсального компонента для отображения деревьев:
+- Два типа отображения узлов
+- Поддержка рекурсивной структуры
+- Управление состоянием узлов
+- Загрузка данных через сервис
 
-To start a local development server, run:
+## Особенности реализации
 
+### Компонент дерева
+- 📌 Два варианта отображения узлов:
+  - **Простой** (ID + название)
+  - **Расширенный** (название + кол-во детей + кнопки)
+- 🔄 Рекурсивный рендеринг дочерних элементов
+- 🎚 Управление раскрытием/сворачиванием:
+  - Локальное переключение по клику на стрелку
+  - Глобальное управление ("Развернуть/Свернуть все")
+- ⚠ Визальное выделение удаленных узлов (серый цвет)
+
+## Технологии
+- Angular 19 (Standalone components)
+- TypeScript
+- RxJS
+- Новый control flow (@if, @for)
+- Signals для управления состоянием
+
+## Установка и запуск
+
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/tyskanhik/AngularTreeExplorer.git
+cd AngularTreeExplorer
+```
+
+2. Установите зависимости:
+```bash
+npm install
+```
+
+3. Запустите приложение:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+4. Откройте в браузере:
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Структура проекта
 
-```bash
-ng generate --help
+```text
+src/
+├── app/
+│   ├── app.component.ts        # Корневой компонент
+│   └── features/
+│       └── tree-node/          # Компонент узла
+│           ├── component.ts    
+│           └── model.ts        
+├── core/
+│   ├── models/                 # Модели данных
+│   └── services/               # Сервисы
+└── assets/                     # Статические файлы
+    └── tree-nodes.json         # Данные дерева
 ```
 
-## Building
+## Демонстрация функционала
+1. Первое дерево:
 
-To build the project run:
+- Отображает ID и название узла
 
-```bash
-ng build
-```
+- Кнопка для вывода сообщения в консоль `нажали на узел ID - ${nodeId}`
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Ручное управление раскрытием
 
-## Running unit tests
+2. Второе дерево:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Показывает название и количество детей
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Кнопка "Развернуть все / Свернуть все" для глобального управления
