@@ -1,0 +1,52 @@
+/* tree-node.component.css */
+.tree-node {
+  margin-left: 20px;
+  padding: 5px;
+  border-left: 2px solid #ccc;
+  font-size: 1.1rem;
+
+  .node-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+
+    .arrow {
+      font-size: 1.3rem;
+      color: #4dc96f;
+      cursor: pointer;
+
+    &-open {
+      color: red;
+    }
+    }
+  }
+  
+  .node-header:hover {
+    background-color: #e9e8e8;
+  }
+
+  .deleted {
+    color: #999;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: inherit;
+    color: #000000;
+    border: 1px solid #7d9488;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #4dc96f;
+    }
+  }
+
+  .children-count {
+    font-size: 0.8em;
+    color: #666;
+  }
+}
